@@ -100,9 +100,12 @@ class HapticsBasicViewModel(
      * and construct HomeViewModelState using Application context.
      */
     companion object {
+        val isAndroidHoneycombOrLater get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB // API Level 3.
+        val isAndroidMOrLater get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M // API Level 23.
         val isAndroidQOrLater get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q // API Level 29.
         val isAndroidROrLater get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R // API Level 30.
         val isAndroidSOrLater get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S // API Level 31.
+        val isAndroidUpsideDownCakeOrLater get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE // API Level 34.
 
         fun provideFactory(
             application: Application
@@ -157,6 +160,46 @@ class HapticsBasicViewModel(
                                     isAndroidROrLater,
                                     HapticFeedbackConstants.REJECT
                                 ),
+                                HapticButton(
+                                    "ContextClick",
+                                    isAndroidMOrLater,
+                                    HapticFeedbackConstants.CONTEXT_CLICK
+                                ),
+                                HapticButton(
+                                    "LongPress",
+                                    isAndroidHoneycombOrLater,
+                                    HapticFeedbackConstants.LONG_PRESS
+                                ),
+                                HapticButton(
+                                    "SegmentFrequentTick",
+                                    isAndroidUpsideDownCakeOrLater,
+                                    HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
+                                ),
+                                HapticButton(
+                                    "SegmentTick",
+                                    isAndroidUpsideDownCakeOrLater,
+                                    HapticFeedbackConstants.SEGMENT_TICK
+                                ),
+                                HapticButton(
+                                    "GestureStart",
+                                    isAndroidROrLater,
+                                    HapticFeedbackConstants.GESTURE_START
+                                ),
+                                HapticButton(
+                                    "GestureEnd",
+                                    isAndroidROrLater,
+                                    HapticFeedbackConstants.GESTURE_END
+                                ),
+                                HapticButton(
+                                    "ToggleOff",
+                                    isAndroidUpsideDownCakeOrLater,
+                                    HapticFeedbackConstants.TOGGLE_OFF
+                                ),
+                                HapticButton(
+                                    "ToggleOn",
+                                    isAndroidUpsideDownCakeOrLater,
+                                    HapticFeedbackConstants.TOGGLE_ON
+                                )
                             )
                         ),
                         // List of composition primitives.
