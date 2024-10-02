@@ -120,7 +120,7 @@ class HapticsBasicViewModel(
                     hapticCategories = listOf(
                         // List of predefined effects.
                         HapticCategory(
-                            application.getString(R.string.vibrations_screen_predefined_effects),
+                            "vibrator.vibrate(VibrationEffect.createPredefined(effect))",
                             categoryType = HapticCategoryType.PREDEFINED_EFFECTS,
                             buttons = listOf(
                                 HapticButton(
@@ -147,7 +147,8 @@ class HapticsBasicViewModel(
                         ),
                         // List of haptic feedback constants.
                         HapticCategory(
-                            application.getString(R.string.vibrations_screen_haptic_feedback_constants),
+                            //application.getString(R.string.vibrations_screen_haptic_feedback_constants),
+                            "view.performHapticFeedback(effect)",
                             categoryType = HapticCategoryType.HAPTIC_FEEDBACK_CONSTANTS,
                             buttons = listOf(
                                 HapticButton(
@@ -204,7 +205,8 @@ class HapticsBasicViewModel(
                         ),
                         // List of composition primitives.
                         HapticCategory(
-                            application.getString(R.string.vibrations_screen_composition_primitives),
+                            "vibrator.vibrate(VibrationEffect.startComposition()\n" +
+                                    "addPrimitive(effect).compose())" ,
                             categoryType = HapticCategoryType.COMPOSITION_PRIMITIVES,
                             buttons = listOf(
                                 HapticButton(
